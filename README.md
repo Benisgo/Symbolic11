@@ -2,14 +2,15 @@
 
 ![Symbolic11 Logo](path/to/your/logo.png)
 
-Symbolic11 is a user-friendly tool that provides a graphical interface for creating symbolic, hard, and junction links on Windows 10 and 11. The tool is designed with a look and feel inspired by Windows 11 for a pleasant and familiar user experience.
+Symbolic11 is a user-friendly GUI tool for Windows 10 and 11 that simplifies the process of creating symbolic, hard, and junction links. Designed with the sleek and familiar interface of Windows 11, Symbolic11 provides a modern and intuitive experience for users interacting with the `mklink` command.
 
 ## Features
 
-- Create symbolic links for files and folders.
-- Create hard links for files.
-- Create junction links for folders.
-- Windows 11-inspired design for a modern and intuitive experience.
+- **Create Links:** Easily generate symbolic links for files and folders, hard links for files, and junction links for folders.
+- **Windows 11 Design:** Crafted with a sleek and familiar interface similar to Windows 11 for a pleasant user experience.
+- **Information Bar:** Receive real-time status updates and confirmation messages in the information bar.
+- **Cross-Version Compatibility:** Compatible with both Windows 10 and Windows 11 operating systems.
+- **Open Source:** Released under the [GNU GENERAL PUBLIC LICENSE Version 3](LICENSE.txt).
 
 ## Prerequisites
 
@@ -24,33 +25,31 @@ Symbolic11 is a user-friendly tool that provides a graphical interface for creat
 
 ## Usage
 
-1. Launch Symbolic11.
-2. Fill in the required details, such as link name, link type, and destination path.
-3. Click the "Create Link" button to generate the link using the `mklink` command.
-4. View the information bar for status updates and confirmation messages.
+1. **Launch Symbolic11.**
+2. **Select Link Type:** Choose the type of symbolic link you want to create (Symbolic Link, Hard Link, Junction Link).
+3. **Select File Type:** Specify whether the link is for a file or folder.
+4. **Enter Link Folder:** Provide the path where the link will be created.
+5. **Enter Link Name:** Input the name of the link.
+6. **Enter Destination:** Specify the path to the target folder or file that the link will point to.
+7. **Click "Create Link":** Complete the process by clicking the "Create Link" button.
 
 ## Screenshots
 
 Include screenshots or gifs demonstrating the user interface and the process of creating links.
 
-## Contributing
-
-If you'd like to contribute to Symbolic11, please follow our [Contribution Guidelines](CONTRIBUTING.md).
-
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [GNU GENERAL PUBLIC LICENSE Version 3](LICENSE.txt).
 
 ## Acknowledgments
 
-- Thanks to the creators of Windows 11 for the design inspiration.
-- Special thanks to the contributors and users of Symbolic11.
+- Special thanks to the creators of WPF UI for inspiring the design.
+- Thanks to the contributors and users of Symbolic11.
 
 ## Support
 
-For bug reports, feature requests, or general inquiries, please [open an issue](https://github.com/yourusername/Symbolic11/issues).
+For bug reports, feature requests, or general inquiries, please [open an issue](https://github.com/Benisgo/Symbolic11/issues).
+
+Elevate your symbolic link creation experience with Symbolic11 — a tool that combines functionality with a touch of modern UI elegance.
 
 ---
-
-**Note:** Replace `path/to/your/logo.png` with the actual path or URL to your project's logo, and adjust the URLs based on your GitHub repository structure.
-
