@@ -20,7 +20,6 @@ public partial class MainWindow
         InitializeComponent();
 
 
-
     }
 
     private void FileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
