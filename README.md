@@ -23,7 +23,7 @@ Symbolic11 is a user-friendly GUI tool for Windows 10 and 11 that simplifies the
 
 ## Installation
 
-1. Download the latest release from the [Releases](https://github.com/yourusername/Symbolic11/releases) page.
+1. Download the latest release from the [Releases](https://github.com/Benisgo/Symbolic11/releases) page.
 2. Extract the contents of the zip file to a location of your choice.
 3. Run `Symbolic11.exe` to launch the application.
 
