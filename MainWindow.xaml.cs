@@ -15,7 +15,7 @@ public partial class MainWindow
     {
         Wpf.Ui.Appearance.Theme.Apply(
             Wpf.Ui.Appearance.ThemeType.Dark,
-            Wpf.Ui.Controls.WindowBackdropType.Mica, 
+            Wpf.Ui.Controls.WindowBackdropType.Mica,
             true);
         InitializeComponent();
 
@@ -46,7 +46,7 @@ public partial class MainWindow
                 break;
             case "Folder":
                 linkFileType = "folder";
-                DestinationText.Content= "Destination Folder";
+                DestinationText.Content = "Destination Folder";
                 HardLink.IsEnabled = false;
                 JunctionLink.IsEnabled = true;
                 if (SymbolicType.Text.Equals(HardLink.Content))
@@ -63,7 +63,8 @@ public partial class MainWindow
         {
             DestinationExplore.IsEnabled = true;
             LinkExplore.IsEnabled = true;
-        } else
+        }
+        else
         {
             DestinationExplore.IsEnabled = false;
             LinkExplore.IsEnabled = false;
@@ -84,13 +85,13 @@ public partial class MainWindow
         //}
         //else
         //{
-            using var folderDialog = new FolderBrowserDialog();
-            DialogResult result = folderDialog.ShowDialog();
+        using var folderDialog = new FolderBrowserDialog();
+        DialogResult result = folderDialog.ShowDialog();
 
-            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath))
-            {
-                LinkFolderPath.Text = folderDialog.SelectedPath;
-            }
+        if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath))
+        {
+            LinkFolderPath.Text = folderDialog.SelectedPath;
+        }
         //}
         validate_CreateLink();
     }
@@ -125,7 +126,8 @@ public partial class MainWindow
         if (!string.IsNullOrEmpty(LinkFolderPath.Text) && !string.IsNullOrEmpty(DestinationPath.Text))
         {
             CreateLink.IsEnabled = true;
-        } else
+        }
+        else
         {
             CreateLink.IsEnabled = false;
         }
@@ -140,7 +142,7 @@ public partial class MainWindow
             InfoBar.Title = "Invalid Name!";
             InfoBar.Message = "";
             InfoBar.IsOpen = true;
-        } 
+        }
         else
         {
             //Create link
@@ -189,7 +191,7 @@ public partial class MainWindow
 
                 // Symbolic link created successfully
                 InfoBar.Severity = Wpf.Ui.Controls.InfoBarSeverity.Success;
-                InfoBar.Title = "Link "+linkName+" Created!";
+                InfoBar.Title = "Link " + linkName + " Created!";
                 InfoBar.Message = "";
                 InfoBar.IsOpen = true;
                 Debug.WriteLine($"mklink {additionalArguments} \"{linkPath}\" \"{targetPath}\"");
@@ -209,10 +211,11 @@ public partial class MainWindow
     {
         string? SymbolicTypeText = SymbolicType.SelectedItem.ToString()?.Split(new string[] { ": " }, StringSplitOptions.None).Last();
 
-        if (SymbolicTypeText.Equals(HardLink.Content)) {
+        if (SymbolicTypeText.Equals(HardLink.Content))
+        {
             LinkText.Content = "Link File";
-        } 
-        else if (LinkText!=null)
+        }
+        else if (LinkText != null)
         {
             LinkText.Content = "Link Folder";
         }
