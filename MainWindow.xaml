@@ -1,0 +1,155 @@
+﻿<ui:FluentWindow
+    x:Class="Symbolic11.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Symbolic11"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="Symbolic11"
+    Width="450"
+    Height="420"
+    mc:Ignorable="d"
+    ResizeMode="NoResize"
+    ExtendsContentIntoTitleBar="True"
+    WindowBackdropType="Mica"
+    WindowCornerPreference="Round"
+    WindowStartupLocation="CenterScreen"
+    d:Background="#202020"
+    >
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar
+            x:Name="TitleBar"
+            Title="Symbolic11"
+            Grid.Row="0"
+            CloseWindowByDoubleClickOnIcon="True"
+            Margin="0,0,0,-10"
+            >
+            <ui:TitleBar.Icon>
+                <ui:SymbolIcon Symbol="DocumentArrowRight20" FontSize="15" Foreground="White" />
+            </ui:TitleBar.Icon>
+        </ui:TitleBar>
+
+
+        <Border 
+            Grid.Row="1" 
+            Height="372"
+            Margin="10,0,10,10"
+            Background="#2d2d2d"
+            BorderBrush="#2d2d2d"  BorderThickness="1" CornerRadius="5">
+
+            <StackPanel Background="Transparent" Margin="5,5,5,5">
+
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label 
+                            Content="Type of symbolic link"
+                            Margin="5,0,0,0"
+                            FontFamily="{StaticResource SegoueUIVariable}"
+                            FontSize="15"
+                            VerticalAlignment="Bottom" 
+                            />
+
+
+                        <ComboBox
+                            x:Name="SymbolicType"
+                            Margin="8,0,0,10"
+                            HorizontalAlignment="Left"
+                            MinWidth="250" SelectedIndex="0"
+                            SelectionChanged="SymbolicType_SelectionChanged"
+                            >
+                            <ComboBoxItem Content="Symbolic Link"/>
+                            <ComboBoxItem Content="Hard Link" x:Name="HardLink" IsEnabled="False" />
+                            <ComboBoxItem Content="Junction Link" x:Name="JunctionLink"/>
+
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" >
+                        <Label 
+                            Content="File Type"
+                            Margin="5,0,0,0"
+                            FontFamily="{StaticResource SegoueUIVariable}"
+                            FontSize="15"
+                            VerticalAlignment="Bottom" 
+                            />
+
+
+                        <ComboBox
+                            x:Name="FileType"
+                            Margin="8,0,0,10"
+                            HorizontalAlignment="Left"
+                            MinWidth="148"
+                            SelectionChanged="FileType_SelectionChanged" SelectedIndex="0"
+                            >
+                            <ComboBoxItem Content="Folder"/>
+                            <ComboBoxItem Content="File"/>
+
+                        </ComboBox>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <Label 
+                    x:Name="LinkText"
+                    Content="Link Folder" Height="20"
+                    Margin="5,0,0,0"
+                    FontFamily="{StaticResource SegoueUIVariable}"
+                    FontSize="15"
+                    VerticalAlignment="Bottom" 
+                    />
+
+                <StackPanel Margin="8,0,0,0"  Orientation="Horizontal" >
+                    <Border Background="#454545" BorderBrush="#454545"  BorderThickness="1" CornerRadius="8">
+                        <TextBlock TextWrapping="Wrap" x:Name="LinkFolderPath" ToolTipService.ToolTip="" Margin="5,0,5,0" Foreground="White" VerticalAlignment="Center"  Width="310"/>
+                    </Border>
+                    <Button x:Name="LinkExplore" Click="LinkExplore_Click" Margin="14,0,0,0" Content="Explore" />
+                </StackPanel>
+
+                <StackPanel Margin="8,8,0,0"  Orientation="Horizontal" >
+                    <ui:TextBox x:Name="LinkName" PlaceholderText="Enter link name" Width="405" />
+                </StackPanel>
+
+
+
+                <Label 
+                    x:Name="DestinationText"
+                    Content="Destination Folder" Height="20"
+                    Margin="5,15,0,0"
+                    FontFamily="{StaticResource SegoueUIVariable}"
+                    FontSize="15"
+                    VerticalAlignment="Bottom" 
+                    />
+
+                <StackPanel Margin="8,0,0,0"  Orientation="Horizontal" >
+                    <Border Background="#454545" BorderBrush="#454545"  BorderThickness="1" CornerRadius="8">
+                        <TextBlock x:Name="DestinationPath" TextWrapping="Wrap" Margin="5,0,5,0" Foreground="White" VerticalAlignment="Center" Width="310"/>
+                    </Border>
+                    <Button x:Name="DestinationExplore" Click="DestinationExplore_Click" Margin="14,0,0,0" Content="Explore" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,025,0,0">
+                    <ui:InfoBar x:Name="InfoBar" Title="Title" Message="Essential message." Width="304" />
+                    <ui:Button x:Name="CreateLink" Click="CreateLink_Click"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10,0,25,0" Content="Create Link" IsEnabled="False"/>
+                </StackPanel>
+
+
+
+
+
+
+            </StackPanel>
+        </Border>
+
+
+
+
+    </Grid>
+</ui:FluentWindow>
