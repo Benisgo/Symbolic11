@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>wpfui-icon.ico</ApplicationIcon>
+    <ApplicationIcon>sym11-icon.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -13,7 +13,7 @@
 
 
   <ItemGroup>
-    <Content Include="wpfui-icon.ico" />
+    <Content Include="sym11-icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\wpfui-icon-256.png" />
-    <Resource Include="Assets\wpfui-icon-1024.png" />
+    <Resource Include="Assets\sym11-icon-256.png" />
+    <Resource Include="Assets\sym11-icon-1024.png" />
   </ItemGroup>
 
 </Project>
