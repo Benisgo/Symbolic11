@@ -9,7 +9,7 @@ namespace Symbolic11;
 public partial class MainWindow
 {
 
-    public string linkFileType = "none";
+    public string linkFileType = "folder";
 
     public MainWindow()
     {
