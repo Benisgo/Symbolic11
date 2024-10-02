@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -27,7 +28,7 @@ public partial class MainWindow
 
         if (DestinationPath == null) { return; }
 
-        string? symbFileType = FileType.SelectedItem.ToString()?.Split(new string[] { ": " }, StringSplitOptions.None).Last();
+        var symbFileType = FileType.SelectedItem.ToString()?.Split(new string[] { ": " }, StringSplitOptions.None).Last();
 
         DestinationPath.Text = ""; //Clear path
         CreateLink.IsEnabled = false;
@@ -120,6 +121,12 @@ public partial class MainWindow
         }
         validate_CreateLink();
     }
+    private void useDestinationName(object sender, RoutedEventArgs e) {
+        if (DestinationPath.Text != null) {
+            string fileName = Path.GetFileName(DestinationPath.Text);
+            LinkName.Text = Path.GetFileNameWithoutExtension(fileName);
+        }
+    }
 
     private void validate_CreateLink()
     {
@@ -172,9 +179,9 @@ public partial class MainWindow
                 additionalArguments = "/J";
             }
 
-            try
+            try 
             {
-                using (Process process = new Process())
+                using (Process process = new Process()) 
                 {
                     process.StartInfo.FileName = "cmd.exe";
                     process.StartInfo.RedirectStandardInput = true;
@@ -196,7 +203,7 @@ public partial class MainWindow
                 InfoBar.IsOpen = true;
                 Debug.WriteLine($"mklink {additionalArguments} \"{linkPath}\" \"{targetPath}\"");
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
                 // An error occurred
                 InfoBar.Severity = Wpf.Ui.Controls.InfoBarSeverity.Error;

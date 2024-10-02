@@ -114,7 +114,8 @@
                 </StackPanel>
 
                 <StackPanel Margin="8,8,0,0"  Orientation="Horizontal" >
-                    <ui:TextBox x:Name="LinkName" PlaceholderText="Enter link name" Width="405" />
+                    <ui:TextBox x:Name="LinkName" PlaceholderText="Enter link name" Width="229" />
+                    <Button x:Name="copyFileName" Click="useDestinationName" Margin="14,0,0,0" Content="Use Destination Name" />
                 </StackPanel>
 
 
