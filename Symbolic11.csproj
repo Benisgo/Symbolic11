@@ -7,6 +7,7 @@
     <ApplicationIcon>sym11-icon.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
 	<PublishSingleFile>true</PublishSingleFile>
+	<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 	<SelfContained>false</SelfContained>
 	<ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -19,8 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WPF-UI" Version="3.0.0-preview.4" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1 " />
+    <PackageReference Include="WPF-UI" Version="3.0.5" />
+	<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+	<PackageReference Include="System.Management.Automation" Version="7.2.23" />
   </ItemGroup>
 
   <ItemGroup>
