@@ -6,14 +6,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>sym11-icon.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
-	<PublishSingleFile>true</PublishSingleFile>
-	<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-	<SelfContained>false</SelfContained>
-	<ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
+    <PublishSingleFile>true</PublishSingleFile>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <SelfContained>false</SelfContained>
+    <ImplicitUsings>enable</ImplicitUsings>
 	<UseWindowsForms>true</UseWindowsForms>
+	<UseWPF>true</UseWPF>
   </PropertyGroup>
-
 
   <ItemGroup>
     <Content Include="sym11-icon.ico" />
@@ -21,8 +20,8 @@
 
   <ItemGroup>
     <PackageReference Include="WPF-UI" Version="3.0.5" />
-	<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-	<PackageReference Include="System.Management.Automation" Version="7.2.23" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="System.Management.Automation" Version="7.2.23" />
   </ItemGroup>
 
   <ItemGroup>

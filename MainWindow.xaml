@@ -34,20 +34,22 @@
         </ui:TitleBar>
         <ui:NavigationView x:Name="RootNavigation"
                            Grid.Row="1"
-                           SelectionChanged="NavigationView_SelectionChanged"
-                           PaneDisplayMode="LeftFluent">
+                           PaneDisplayMode="LeftFluent"
+                           IsBackButtonVisible="Collapsed"
+                           Loaded="RootNavigation_Loaded">
             <ui:NavigationView.MenuItems>
-                <Frame x:Name="ContentFrame"/>
-                <ui:NavigationViewItem Content="Create Links"
+                <ui:NavigationViewItem Content="Create"
                                        FontSize="9"
-                                       TargetPageType="{x:Type pages:CreateLink}">
+                                       TargetPageType="{x:Type pages:CreateLink}"
+                                       NavigationCacheMode="Enabled">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="Home24" />
                     </ui:NavigationViewItem.Icon>
                 </ui:NavigationViewItem>
-                <ui:NavigationViewItem Content="View Links"
+                <ui:NavigationViewItem Content="View"
                                        FontSize="9"
-                                       TargetPageType="{x:Type pages:LinkView}">
+                                       TargetPageType="{x:Type pages:LinkView}"
+                                       NavigationCacheMode="Enabled">
                     <ui:NavigationViewItem.Icon>
                         <ui:SymbolIcon Symbol="LinkSquare20" />
                     </ui:NavigationViewItem.Icon>

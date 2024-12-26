@@ -24,6 +24,7 @@ public partial class CreateLink : Page
             InfoBar.Message = "The application is not running with administrative privileges. Link creation may fail.";
             InfoBar.IsOpen = true;
         }
+
     }
     private bool IsUserAdministrator()
     {

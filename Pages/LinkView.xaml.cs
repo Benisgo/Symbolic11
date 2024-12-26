@@ -218,7 +218,6 @@ public partial class LinkView : Page
             searchButton.Content = "Search";
             currentSearchDirectory.Text = "";
         });
-
     }
 
     private void searchButton_Click(object sender, System.Windows.RoutedEventArgs e)
