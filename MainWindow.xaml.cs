@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,8 +20,6 @@ public partial class MainWindow
             Wpf.Ui.Controls.WindowBackdropType.Mica,
             true);
         InitializeComponent();
-
-
     }
 
     private void FileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -28,7 +27,7 @@ public partial class MainWindow
 
         if (DestinationPath == null) { return; }
 
-        var symbFileType = FileType.SelectedItem.ToString()?.Split(new string[] { ": " }, StringSplitOptions.None).Last();
+        var symbFileType = FileType.SelectedItem.ToString()?.Split([": "], StringSplitOptions.None).Last();
 
         DestinationPath.Text = ""; //Clear path
         CreateLink.IsEnabled = false;
@@ -74,26 +73,17 @@ public partial class MainWindow
 
     private void LinkExplore_Click(object sender, RoutedEventArgs e)
     {
-        //if (SymbolicType.Text.Equals(HardLink.Content))
-        //{
-        //    using var fileDialog = new OpenFileDialog();
-        //    DialogResult result = fileDialog.ShowDialog();
-        //
-        //    if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fileDialog.FileName))
-        //    {
-        //        LinkFolderPath.Text = fileDialog.FileName;
-        //    }
-        //}
-        //else
-        //{
-        using var folderDialog = new FolderBrowserDialog();
-        DialogResult result = folderDialog.ShowDialog();
+        OpenFolderDialog folderDialog = new OpenFolderDialog() {
+            DereferenceLinks = true,
+            Multiselect = false
+        };
+        bool? result = folderDialog.ShowDialog(this);
 
-        if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath))
+        if (result == true &&
+            !string.IsNullOrEmpty(folderDialog.FolderName))
         {
-            LinkFolderPath.Text = folderDialog.SelectedPath;
+            LinkFolderPath.Text = folderDialog.FolderName;
         }
-        //}
         validate_CreateLink();
     }
 
@@ -101,20 +91,29 @@ public partial class MainWindow
     {
         if (linkFileType == "folder")
         {
-            using var folderDialog = new FolderBrowserDialog();
-            DialogResult result = folderDialog.ShowDialog();
+            OpenFolderDialog folderDialog = new OpenFolderDialog() {
+                DereferenceLinks = true,
+                Multiselect = false
+            };
+            bool? result = folderDialog.ShowDialog(this);
 
-            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath))
+            if (result == true &&
+                !string.IsNullOrEmpty(folderDialog.FolderName))
             {
-                DestinationPath.Text = folderDialog.SelectedPath;
+                DestinationPath.Text = folderDialog.FolderName;
             }
         }
         else if (linkFileType == "file")
         {
-            using var fileDialog = new OpenFileDialog();
-            DialogResult result = fileDialog.ShowDialog();
+            OpenFileDialog fileDialog = new OpenFileDialog() {
+                CheckFileExists = true,
+                DereferenceLinks = true,
+                Multiselect = false
+            };
+            bool? result = fileDialog.ShowDialog();
 
-            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fileDialog.FileName))
+            if (result == true &&
+                !string.IsNullOrWhiteSpace(fileDialog.FileName))
             {
                 DestinationPath.Text = fileDialog.FileName;
             }
@@ -216,9 +215,9 @@ public partial class MainWindow
 
     private void SymbolicType_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string? SymbolicTypeText = SymbolicType.SelectedItem.ToString()?.Split(new string[] { ": " }, StringSplitOptions.None).Last();
+        string? SymbolicTypeText = SymbolicType.SelectedItem.ToString()?.Split([": "], StringSplitOptions.None).Last();
 
-        if (SymbolicTypeText.Equals(HardLink.Content))
+        if (String.Equals(SymbolicTypeText, HardLink.Content))
         {
             LinkText.Content = "Link File";
         }
