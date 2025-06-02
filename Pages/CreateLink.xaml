@@ -1,0 +1,260 @@
+﻿<Page x:Class="Symbolic11.Pages.CreateLink"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:converters="clr-namespace:Symbolic11.Converters"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      d:DesignHeight="320"
+      d:DesignWidth="420"
+      mc:Ignorable="d"
+      Title="CreateLink">
+
+    <Page.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVisibility" />
+    </Page.Resources>
+
+    <Grid Margin="5,5,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Content="Create a"
+                       Margin="5,0,0,0"
+                       FontFamily="{StaticResource SegoueUIVariable}"
+                       Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource BoolToVisibility}}"
+                       FontSize="15"
+                       VerticalAlignment="Bottom"
+                       FontWeight="Bold" />
+                <Label Grid.Row="0"
+                       Content="Link Type"
+                       Margin="5,0,0,0"
+                       FontFamily="{StaticResource SegoueUIVariable}"
+                       Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource InverseBoolToVisibility}}"
+                       FontSize="15"
+                       VerticalAlignment="Bottom" />
+                <ComboBox x:Name="SymbolicType"
+                          Grid.Row="1"
+                          Margin="8,0,0,10"
+                          SelectedIndex="0"
+                          SelectionChanged="SymbolicType_SelectionChanged">
+                    <ComboBoxItem Content="Symbolic Link" />
+                    <ComboBoxItem Content="Hard Link"
+                                  x:Name="HardLink"
+                                  IsEnabled="False" />
+                    <ComboBoxItem Content="Junction Link"
+                                  x:Name="JunctionLink" />
+                </ComboBox>
+
+            </Grid>
+            <Grid Grid.Column="1"
+                  Margin="5,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Content="for a"
+                       Margin="5,0,0,0"
+                       FontFamily="{StaticResource SegoueUIVariable}"
+                       Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource BoolToVisibility}}"
+                       FontSize="15"
+                       VerticalAlignment="Bottom"
+                       FontWeight="Bold" />
+                <Label Grid.Row="0"
+                       Content="File Type"
+                       Margin="5,0,0,0"
+                       FontFamily="{StaticResource SegoueUIVariable}"
+                       Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource InverseBoolToVisibility}}"
+                       FontSize="15"
+                       VerticalAlignment="Bottom" />
+
+                <ComboBox Grid.Row="1"
+                          x:Name="FileType"
+                          Margin="8,0,0,10"
+                          HorizontalAlignment="Left"
+                          MinWidth="148"
+                          SelectionChanged="FileType_SelectionChanged"
+                          SelectedIndex="0">
+                    <ComboBoxItem Content="Folder" />
+                    <ComboBoxItem Content="File" />
+
+                </ComboBox>
+
+            </Grid>
+            <Grid Grid.Column="2"
+                  HorizontalAlignment="Right"
+                  Margin="5,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Content="Show Guide"
+                       Margin="0,0,0,0"
+                       FontFamily="{StaticResource SegoueUIVariable}"
+                       FontSize="15"
+                       VerticalAlignment="Bottom" />
+
+                <ToggleButton x:Name="HelpToggleButton"
+                              Content="?"
+                              Grid.Row="1"
+                              VerticalAlignment="Top"
+                              HorizontalAlignment="Center"
+                              Height="36"
+                              Width="35" />
+
+            </Grid>
+
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"
+                   x:Name="LinkText"
+                   Content="Link Folder"
+                   Height="20"
+                   Margin="5,0,0,0"
+                   FontFamily="{StaticResource SegoueUIVariable}"
+                   FontSize="15"
+                   Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource InverseBoolToVisibility}}"
+                   VerticalAlignment="Bottom" />
+            <Label Grid.Row="0"
+                   Content="The link will be created at:"
+                   Height="20"
+                   Margin="5,0,0,0"
+                   FontFamily="{StaticResource SegoueUIVariable}"
+                   FontSize="15"
+                   Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource BoolToVisibility}}"
+                   VerticalAlignment="Bottom"
+                   FontWeight="Bold" />
+            <Grid Grid.Row="1"
+                  Margin="5,0,5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="LinkFolderPath"
+                         Grid.Column="0"
+                         TextWrapping="Wrap"
+                         Foreground="White"
+                         IsEnabled="False" />
+                <Button x:Name="LinkExplore"
+                        Grid.Column="1"
+                        Click="LinkExplore_Click"
+                        Margin="14,0,0,0"
+                        Content="Explore" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Content="It will link to:"
+                       Height="20"
+                       Margin="5,15,0,0"
+                       FontFamily="{StaticResource SegoueUIVariable}"
+                       FontSize="15"
+                       Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource BoolToVisibility}}"
+                       FontWeight="Bold" />
+                <Label Grid.Row="0"
+                       x:Name="DestinationText"
+                       Content="Destination Folder"
+                       Height="20"
+                       Margin="5,15,0,0"
+                       FontFamily="{StaticResource SegoueUIVariable}"
+                       FontSize="15"
+                       Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource InverseBoolToVisibility}}"
+                       VerticalAlignment="Bottom" />
+                <Grid Grid.Row="1"
+                      Margin="5,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="DestinationPath"
+                             Grid.Column="0"
+                             TextWrapping="Wrap"
+                             Foreground="White"
+                             IsEnabled="False" />
+                    <Button x:Name="DestinationExplore"
+                            Click="DestinationExplore_Click"
+                            Grid.Column="1"
+                            Margin="14,0,0,0"
+                            Content="Explore" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2"
+              Margin="5,10,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"
+                   Content="It will have the name:"
+                   Height="20"
+                   Margin="5,0,0,0"
+                   FontFamily="{StaticResource SegoueUIVariable}"
+                   FontSize="15"
+                   Visibility="{Binding IsChecked, ElementName=HelpToggleButton, Converter={StaticResource BoolToVisibility}}"
+                   FontWeight="Bold" />
+            <ui:TextBox x:Name="LinkName"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        PlaceholderText="Enter link name" />
+            <Button x:Name="copyFileName"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Click="useDestinationName"
+                    Margin="14,0,0,0"
+                    Content="Use Destination Name" />
+        </Grid>
+        <Grid Grid.Row="3"
+              Margin="0,14,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ui:InfoBar Grid.Column="0"
+                        x:Name="InfoBar"
+                        Title="Title"
+                        Margin="5,0,14,0"
+                        Message="Essential message." />
+
+            <ui:Button Grid.Column="1"
+                       x:Name="CreateLinkButton"
+                       Click="CreateLink_Click"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,5,0"
+                       Content="Create Link"
+                       IsEnabled="False" />
+        </Grid>
+    </Grid>
+</Page>
