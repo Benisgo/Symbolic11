@@ -103,18 +103,7 @@ public partial class CreateLink : Page
 
     private void LinkExplore_Click(object sender, RoutedEventArgs e)
     {
-        //if (SymbolicType.Text.Equals(HardLink.Content))
-        //{
-        //    using var fileDialog = new OpenFileDialog();
-        //    DialogResult result = fileDialog.ShowDialog();
-        //
-        //    if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fileDialog.FileName))
-        //    {
-        //        LinkFolderPath.Text = fileDialog.FileName;
-        //    }
-        //}
-        //else
-        //{
+       
         using var folderDialog = new FolderBrowserDialog();
         DialogResult result = folderDialog.ShowDialog();
 
@@ -122,29 +111,22 @@ public partial class CreateLink : Page
         {
             LinkFolderPath.Text = folderDialog.SelectedPath;
         }
-        //}
         validate_CreateLink();
     }
 
-    private void DestinationExplore_Click(object sender, RoutedEventArgs e)
-    {
-        if (linkFileType == "folder")
-        {
+    private void DestinationExplore_Click(object sender, RoutedEventArgs e) {
+        if (linkFileType == "folder") {
             using var folderDialog = new FolderBrowserDialog();
             DialogResult result = folderDialog.ShowDialog();
 
-            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath))
-            {
+            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath)) {
                 DestinationPath.Text = folderDialog.SelectedPath;
             }
-        }
-        else if (linkFileType == "file")
-        {
+        } else if (linkFileType == "file") {
             using var fileDialog = new System.Windows.Forms.OpenFileDialog();
             DialogResult result = fileDialog.ShowDialog();
 
-            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fileDialog.FileName))
-            {
+            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fileDialog.FileName)) {
                 DestinationPath.Text = fileDialog.FileName;
             }
         }
