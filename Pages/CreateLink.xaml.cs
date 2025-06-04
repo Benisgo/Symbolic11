@@ -103,30 +103,39 @@ public partial class CreateLink : Page
 
     private void LinkExplore_Click(object sender, RoutedEventArgs e)
     {
-       
-        using var folderDialog = new FolderBrowserDialog();
-        DialogResult result = folderDialog.ShowDialog();
 
-        if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath))
+        OpenFolderDialog folderDialog = new OpenFolderDialog {
+            Multiselect = false,
+            DereferenceLinks = true
+        };
+
+        if (folderDialog.ShowDialog() == true &&
+            !string.IsNullOrEmpty(folderDialog.FolderName))
         {
-            LinkFolderPath.Text = folderDialog.SelectedPath;
+            LinkFolderPath.Text = folderDialog.FolderName;
         }
         validate_CreateLink();
     }
 
     private void DestinationExplore_Click(object sender, RoutedEventArgs e) {
         if (linkFileType == "folder") {
-            using var folderDialog = new FolderBrowserDialog();
-            DialogResult result = folderDialog.ShowDialog();
+            OpenFolderDialog folderDialog = new OpenFolderDialog {
+                Multiselect = false,
+                DereferenceLinks = true
+            };
 
-            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath)) {
-                DestinationPath.Text = folderDialog.SelectedPath;
+            if (folderDialog.ShowDialog() == true
+                && !string.IsNullOrEmpty(folderDialog.FolderName)) {
+                DestinationPath.Text = folderDialog.FolderName;
             }
         } else if (linkFileType == "file") {
-            using var fileDialog = new System.Windows.Forms.OpenFileDialog();
-            DialogResult result = fileDialog.ShowDialog();
+            var fileDialog = new OpenFileDialog() {
+                Multiselect = false,
+                DereferenceLinks = true
+            };
 
-            if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fileDialog.FileName)) {
+            if (fileDialog.ShowDialog() == true &&
+                !string.IsNullOrWhiteSpace(fileDialog.FileName)) {
                 DestinationPath.Text = fileDialog.FileName;
             }
         }

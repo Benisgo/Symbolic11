@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>sym11-icon.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
@@ -10,8 +10,7 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <SelfContained>false</SelfContained>
     <ImplicitUsings>enable</ImplicitUsings>
-	<UseWindowsForms>true</UseWindowsForms>
-	<UseWPF>true</UseWPF>
+  	<UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
