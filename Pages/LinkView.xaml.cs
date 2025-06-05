@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.Win32;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -243,13 +244,16 @@ public partial class LinkView : Page
 
     private void changeSearchDirectory_Click(object sender, System.Windows.RoutedEventArgs e)
     {
-        using var folderDialog = new FolderBrowserDialog();
-        DialogResult result = folderDialog.ShowDialog();
+        var folderDialog = new OpenFolderDialog {
+            Multiselect = false,
+            ValidateNames = true
+        };
 
-        if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrEmpty(folderDialog.SelectedPath))
+        if (folderDialog.ShowDialog() == true &&
+            !string.IsNullOrEmpty(folderDialog.FolderName))
         {
-            SearchPathText.Text = folderDialog.SelectedPath;
-            currentSearchPath = folderDialog.SelectedPath;
+            SearchPathText.Text = folderDialog.FolderName;
+            currentSearchPath = folderDialog.FolderName;
         }
     }
 
